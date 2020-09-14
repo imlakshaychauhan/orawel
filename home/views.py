@@ -31,8 +31,8 @@ def contact(request):
       return render(request, 'contact.html' )
       # return HttpResponse("services")
 
-def services(request):
-      return render(request, 'services.html' )
+def treatments(request):
+      return render(request, 'treatments.html' )
      # return HttpResponse("about")
 
 def login(request):
