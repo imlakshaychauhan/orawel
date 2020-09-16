@@ -3,12 +3,12 @@ from datetime import datetime
 from home.models import Contact
 from django.contrib import messages
 from django.contrib.auth.models import User
-# from django.contrib.auth import logout,authenticate
+from django.contrib.auth import logout,authenticate,login
 
 # Create your views here
 def index(request):
 #     if user.request.is_anonymous:
-#       return redirect("/login")
+#       return redirect("/login") 
 
     # messages.success(request,"This is success alert")
       return render(request, 'index.html')
@@ -35,31 +35,37 @@ def treatments(request):
       return render(request, 'treatments.html' )
      # return HttpResponse("about")
 
-def login(request):
-   return render(request, 'login.html' )
-   
-#    if request.method=="post":
-#        username = request.POST.get('username')    
-#        password = request.POST.get('password')    
-#        user = authenticate(username=username, password=password)
-#        print(username,password)
+def loggedpage(request):
+      # print(user.request)
+      # if request.user.is_authenticated :  
+      #     return redirect('/login')
+      return render(request,'loggedpage.html')
 
-#        if user is not None:
-# #     # A backend authenticated the credentials
-#           return redirect("/")
-#        else:
-# #     # No backend authenticated the credentials
-#            return render(request, 'login.html' )
+def loginUser(request):
+    if request.method=="POST":
+       username = request.POST.get('username')    
+       password = request.POST.get('password')    
+       user = authenticate(username=username, password=password)
+       print(username,password)
 
+       if user is not None:
+    # A backend authenticated the credentials
+          return redirect('/loggedpage')
+       else:
+    # No backend authenticated the credentials
+           return render(request, 'login.html' )
+
+    return render(request, 'login.html' )
 
      # test user name:honey and password:honey@12345
 
 #     return HttpResponse("LoginPage")  
 
 
-# def logoutUser(request):
-#       return redirect("/login")
-#      # return HttpResponse("logout page")     
+def logoutUser(request):
+      logout(request)
+      return redirect("/login")
+     # return HttpResponse("logout page")     
  
 
       
