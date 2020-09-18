@@ -13,4 +13,12 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
     
+class Doctors(models.Model):
+    # email = models.CharField(max_length=122)
+    # date = models.DateField()
+    name = models.CharField(max_length=122)
+    phone = models.CharField(max_length=20)
+    address = models.TextField()
 
+    def __str__(self):
+        return self.name

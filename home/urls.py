@@ -10,7 +10,9 @@ urlpatterns = [
     path("treatments",views.treatments,name='treatments'),
     path("loggedpage",views.loggedpage,name='loggedpage'),
     path("login",views.loginUser,name='login'),
-    path("logout",views.logoutUser,name='logout')
+    path("logout",views.logoutUser,name='logout'),
+   
+
 ]
 
 
