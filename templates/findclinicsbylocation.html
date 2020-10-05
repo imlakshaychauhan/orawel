@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block head %}
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+{% endblock head %}
+
+{% block body %}
+    <button onclick="getLocation()"><h1>Submit Location</h1></button>
+    <div id="output"></div>
+    <!-- js___________________________________________________________js -->
+    <script>
+    var x = document.getElementById('output');
+ function getLocation(){
+  if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(showPosition);
+  }else{
+      x.innerHTML = "Browser Not Supporting";
+  }
+}
+ function showPosition(position){
+    //  x.innerHTML = "latitude = "+position.coords.latitude
+    //  x.innerHTML += "<br />"
+    //  x.innerHTML += "longitude = "+position.coords.longitude
+  var locAPI = "http://maps.googleapis.com/maps/apis/geocode/json?lat1ng="+position.coords.latitude+","+position.coords.longitude+"&sensor=true";
+//    x.innerHTML = locAPI;
+   $.get({
+       url : locAPI,
+       success: function(data){
+           console.log(data);
+       }
+   });
+ }
+ </script>
+{% endblock body %}

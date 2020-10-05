@@ -67,6 +67,43 @@ def logoutUser(request):
       return redirect("/login")
      # return HttpResponse("logout page")     
  
+def findclinics(request):
+      return render(request,'findclinics.html')
 
-
+def findclinicsbylocation(request):
+      return render(request, 'findclinicsbylocation.html')
       
+
+
+
+def signupUser(request):
+      if request.method == 'POST':
+       firstName = request.POST.get('firstName')
+       print('firstname = ',firstName)
+       lastName = request.POST.get('lastName')
+       username = request.POST.get('username')
+       print('username = ',username)
+       email = request.POST.get('email')
+       print('email = ',email)
+       phone = request.POST.get('phone')
+       print('phone',phone)
+       pass1 = request.POST.get('pass1')
+       print('password',pass1)
+       pass2 = request.POST.get('pass2')
+      # return render(request, 'signup.html')
+           
+           #check for errorneous inputs
+           #
+
+           #create the user
+       
+       myuser = User.objects.create_user(username=username, email=email ,pass1=password)
+       myuser.first_name=firstName
+       myuser.last_name=lastName
+       myuser.save() 
+       messages.success(request, 'Your Orawell account has been Successfully created')
+       return redirect('/loggedpage')
+      # else:
+      #     return HttpResponse('Not allowed')
+
+      return render(request, 'signup.html' ) 

@@ -11,8 +11,9 @@ urlpatterns = [
     path("loggedpage",views.loggedpage,name='loggedpage'),
     path("login",views.loginUser,name='login'),
     path("logout",views.logoutUser,name='logout'),
-   
-
+    path("findclinics",views.findclinics,name='findclinics'),
+    path("findclinicsbylocation",views.findclinicsbylocation,name='findclinicsbylocation'),
+    path("signup",views.signupUser,name='signup')
 ]
 
 

@@ -19,6 +19,8 @@ class Doctors(models.Model):
     name = models.CharField(max_length=122)
     phone = models.CharField(max_length=20)
     address = models.TextField()
+    Qualification = models.TextField()
+
 
     def __str__(self):
         return self.name
