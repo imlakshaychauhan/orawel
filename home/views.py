@@ -82,9 +82,7 @@ def signupUser(request):
        print('firstname = ',firstName)
        lastName = request.POST.get('lastName')
        username = request.POST.get('username')
-       print('username = ',username)
-       email = request.POST.get('email')
-       print('email = ',email)
+       print('email = ',username)
        phone = request.POST.get('phone')
        print('phone',phone)
        pass1 = request.POST.get('pass1')
@@ -97,7 +95,7 @@ def signupUser(request):
 
            #create the user
        
-       myuser = User.objects.create_user(username=username, email=email ,pass1=password)
+       myuser = User.objects.create_user( username ,pass1)
        myuser.first_name=firstName
        myuser.last_name=lastName
        myuser.save() 
